@@ -1,20 +1,22 @@
 import s from './Options.module.css';
 
-const Options = () => {
+const Options = ({ updateFeedback, resetFeedback, totalFeedback }) => {
   return (
     <ul className={s.optionsList}>
       <li>
-        <button>Good</button>
+        <button onClick={() => updateFeedback('good')}>Good</button>
       </li>
       <li>
-        <button>Netural</button>
+        <button onClick={() => updateFeedback('neutral')}>Neutral</button>
       </li>
       <li>
-        <button>Bad</button>
+        <button onClick={() => updateFeedback('bad')}>Bad</button>
       </li>
-      <li>
-        <button>Reset</button>
-      </li>
+      {totalFeedback > 0 && (
+        <li>
+          <button onClick={resetFeedback}>Reset</button>
+        </li>
+      )}
     </ul>
   );
 };
